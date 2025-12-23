@@ -1,0 +1,22 @@
+class Solution {
+public:
+    vector<int> asteroidCollision(vector<int>& ast) {
+        vector<int> st;
+        for(int i=0;i<ast.size();i++) {
+            int curr=ast[i];
+            while(!st.empty()&&st.back()>0&&curr<0) {
+                if(st.back()<-curr) {
+                    st.pop_back();
+                    continue;
+                }
+                else if(st.back()==-curr) {
+                    st.pop_back();
+                }
+                curr=0;
+                break;
+            }
+            if(curr!=0)st.push_back(curr);
+        }
+        return st;
+    }
+};
